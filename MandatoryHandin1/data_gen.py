@@ -2,6 +2,11 @@
 #tuple(8byte key,8byte value)
 
 import random
+def chunks(lst, n):
+	for i in range(0, len(lst), n):
+		yield (lst[i:i + n])
+
+
 def gen(start,finish,result,index):
 	start = pow(2,start)
 	finish = pow(2,finish)
