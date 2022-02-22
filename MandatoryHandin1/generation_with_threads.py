@@ -11,8 +11,10 @@ def concat(results):
 
 if __name__=='__main__':
 	indexes_start = [0, 16, 20, 23]
+	#indexes_start = [0]
 	indexes_end = [15, 19, 22, 24]
-	noThreads = 4
+	#indexes_end = [15]
+	noThreads = len(indexes_start)
 	threads = [None] * noThreads
 	results = [None] * noThreads
 	start_time = time.time()

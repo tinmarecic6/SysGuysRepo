@@ -2,3 +2,5 @@ MandatoryHandin1/data_set*.txt
 */*.bak
 */*.pyc
 */*/*.pyc
+*/test.*
+test.*
