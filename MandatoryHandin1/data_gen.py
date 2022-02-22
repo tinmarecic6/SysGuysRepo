@@ -2,9 +2,14 @@
 #tuple(8byte key,8byte value)
 
 import random
-size = pow(2,10)
-l = [(i,random.randint(1,size)) for i in range(size)]
-random.shuffle(l)
-with open("data_set.txt","w") as f:
-	for item in l:
-		f.write(str(item[0])+","+str(item[1])+"\n")
+def gen(start,finish,result,index):
+	start = pow(2,start)
+	finish = pow(2,finish)
+	target = [(i,random.randint(1,finish)) for i in range(start,finish)]
+	result[index] = target
+	return target
+
+def writeToFile(filename,mode,l):
+	with open(filename+".txt",mode) as f:
+		for item in l:
+			f.write(str(item)+'\n')

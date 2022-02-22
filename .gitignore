@@ -1,1 +1,4 @@
-MandatoryHandin1/data_set.txt
+MandatoryHandin1/data_set*.txt
+*/*.bak
+*/*.pyc
+*/*/*.pyc
