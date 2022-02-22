@@ -2,7 +2,7 @@
 #tuple(8byte key,8byte value)
 
 import random
-size = pow(2,10)
+size = pow(2,20)
 l = [(i,random.randint(1,size)) for i in range(size)]
 random.shuffle(l)
 with open("data_set.txt","w") as f:
