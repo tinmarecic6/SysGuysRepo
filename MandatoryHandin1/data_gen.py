@@ -8,8 +8,6 @@ def chunks(lst, n):
 
 
 def gen(start,finish,result,index):
-	start = pow(2,start)
-	finish = pow(2,finish)
 	target = [(i,random.randint(1,finish)) for i in range(start,finish)]
 	result[index] = target
 	return target
