@@ -45,6 +45,7 @@ class Partitions:
 if __name__ == '__main__':
 	numPartitions = int(sys.argv[1])
 	threads = int(sys.argv[2])
+	print(f"Starting run with {numPartitions} partitions and {threads} threads")
 	P = Partitions(numPartitions,threads)
 	filename = "log_"+datetime.now().strftime("%Y-%m-%d")+".csv"
 	if not os.path.isfile(filename):
