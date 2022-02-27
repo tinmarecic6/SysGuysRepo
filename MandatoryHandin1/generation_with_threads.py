@@ -10,23 +10,18 @@ def concat(results):
 	return l
 
 if __name__=='__main__':
-	#indexes_start = [0, 15, 20, 23]
-	#indexes_start = [0]
-	#indexes_end = [15, 19, 22, 24]
-
-	#indexes_end = [15]
 	max = pow(2,24)
 	noThreads = 4
 	indexes_start = [None]*noThreads
 	indexes_end = [None]*noThreads
 	indexesSplit = round(max/noThreads)
+	threads = [None] * noThreads
+	results = [None] * noThreads
 	for i in range(noThreads):
 		start_ind = indexesSplit*i
 		end_ind = indexesSplit*i+indexesSplit if indexesSplit*i+indexesSplit < max else max
 		indexes_start[i] = start_ind
 		indexes_end[i] = end_ind
-	threads = [None] * noThreads
-	results = [None] * noThreads
 	start_time = time.time()
 	for i in range(len(threads)):
 		threads[i] = threading.Thread(target=data_gen.gen, args=(indexes_start[i],indexes_end[i],results,i))
