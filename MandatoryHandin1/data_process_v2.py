@@ -2,31 +2,6 @@ from datetime import datetime
 import multiprocessing,time,random,sys
 import os
 
-# https://stackoverflow.com/a/55775916
-import ctypes
-
-CLOCK_REALTIME = 0
-
-class timespec(ctypes.Structure):
-        _fields_ = [
-                        ('tv_sec', ctypes.c_int64), # seconds, https://stackoverflow.com/q/471248/1672565
-                                ('tv_nsec', ctypes.c_int64), # nanoseconds
-                                        ]
-
-        clock_gettime = ctypes.cdll.LoadLibrary('libc.so.6').clock_gettime
-        clock_gettime.argtypes = [ctypes.c_int64, ctypes.POINTER(timespec)]
-        clock_gettime.restype = ctypes.c_int64    
-
-        def time_ns():
-                tmp = timespec()
-                    ret = clock_gettime(CLOCK_REALTIME, ctypes.pointer(tmp))
-                        if bool(ret):
-                                    raise OSError()
-                                    return tmp.tv_sec * 10 ** 9 + tmp.tv_nsec
-
-
-
-
 class Partitions:
 	log_header = f"method|timestamp|throughput|duration(ms)|noTuples|noPartitions|noThreads\n"
 	def __init__(self,numPartitions,threads):
@@ -77,24 +52,19 @@ if __name__ == '__main__':
 	if not os.path.isfile(filename):
 		with open(filename,"w") as f:
 			f.write(P.log_header)
-	#start = time.time_ns()
-        start = time_ns()
+	start = time.time()
 
 	with multiprocessing.Pool(threads) as pool:
 		data = pool.map(P.gen,[x for x in range(0,pow(2,24))])
-	print(f"Generated in {(time.time_ns()-start)// 1_000_000} s")
+	print(f"Generated in {(time.time()-start)} s")
 	with multiprocessing.Pool(threads) as pool:
-		#start = time.time_ns()
-		start = time_ns()
-                independent_result = pool.map(P.independentPartition,[data])
-		#end_time = (time.time_ns()-start)//1_000_000
-                end_time = (time_ns()-start)//1_000_000
+		start = time.time()
+		independent_result = pool.map(P.independentPartition,[data])
+		end_time = (time.time()-start)
 		print(f"Partitioned independently in {end_time} ms")
 		P.log(datetime.now(),end_time,len(data),"Independent",numPartitions,threads)
-		#start = time.time_ns()
-		start = time_ns()
-                concurrent_result = pool.map(P.concurrentPartition,[data])
-		#end_time = (time.time_ns()-start)//1_000_000
-		end_time = (time_ns()-start)//1_000_000
-                print(f"Partitioned concurrently in {end_time} ms")
+		start = time.time()
+		concurrent_result = pool.map(P.concurrentPartition,[data])
+		end_time = (time.time()-start)
+		print(f"Partitioned concurrently in {end_time} ms")
 		P.log(datetime.now(),end_time,len(data),"Concurrent",numPartitions,threads)
