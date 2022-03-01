@@ -49,10 +49,9 @@ def chunks(l, n):
         yield l[i::n]
 
 if __name__ == '__main__':
-	numPartitions = int(sys.argv[1])
-	threads = int(sys.argv[2])
-	print(f"Starting run with {numPartitions} partitions and {threads} threads")
-	P = Partitions(numPartitions,threads)
+	temp = 2
+	threads = int(sys.argv[1])
+	P = Partitions(temp,threads)
 	filename = "log_"+datetime.now().strftime("%Y-%m-%d")+".csv"
 	if not os.path.isfile(filename):
 		with open(filename,"w") as f:
@@ -62,15 +61,18 @@ if __name__ == '__main__':
 	with multiprocessing.Pool(threads) as pool:
 		data = pool.map(P.gen,[x for x in range(0,pow(2,24))])
 	print(f"Generated in {(time.time()-start)} s")
-	with multiprocessing.Pool(threads) as pool:
-		chunksToWork = list(chunks(data,threads))
-		start = time.time()
-		independent_result = pool.map(P.independentPartition,chunksToWork)
-		end_time = (time.time()-start)
-		print(f"Partitioned independently in {end_time} ms")
-		P.log(datetime.now(),end_time,len(data),"Independent",numPartitions,threads)
-		start = time.time()
-		concurrent_result = pool.map(P.concurrentPartition,chunksToWork)
-		end_time = (time.time()-start)
-		print(f"Partitioned concurrently in {end_time} ms")
-		P.log(datetime.now(),end_time,len(data),"Concurrent",numPartitions,threads)
+	for numPartitions in [2,4,6,8,10,12,14,16,18]:
+		print(f"Starting run with {numPartitions} partitions and {threads} threads")
+		P = Partitions(numPartitions,threads)
+		with multiprocessing.Pool(threads) as pool:
+			chunksToWork = list(chunks(data,threads))
+			start = time.time()
+			independent_result = pool.map(P.independentPartition,chunksToWork)
+			end_time = (time.time()-start)
+			print(f"Partitioned independently in {end_time} ms")
+			P.log(datetime.now(),end_time,len(data),"Independent",numPartitions,threads)
+			start = time.time()
+			concurrent_result = pool.map(P.concurrentPartition,chunksToWork)
+			end_time = (time.time()-start)
+			print(f"Partitioned concurrently in {end_time} ms")
+			P.log(datetime.now(),end_time,len(data),"Concurrent",numPartitions,threads)
