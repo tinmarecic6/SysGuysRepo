@@ -43,6 +43,11 @@ class Partitions:
 		with open(file,"a") as f:
 			f.write(f"{method}|{dttm}|{throughput}|{duration}|{noTuples}|{partitions}|{threads}\n")
 
+def chunks(l, n):
+    """Yield n number of striped chunks from l."""
+    for i in range(0, n):
+        yield l[i::n]
+
 if __name__ == '__main__':
 	numPartitions = int(sys.argv[1])
 	threads = int(sys.argv[2])
@@ -53,18 +58,19 @@ if __name__ == '__main__':
 		with open(filename,"w") as f:
 			f.write(P.log_header)
 	start = time.time()
-
+	
 	with multiprocessing.Pool(threads) as pool:
 		data = pool.map(P.gen,[x for x in range(0,pow(2,24))])
 	print(f"Generated in {(time.time()-start)} s")
 	with multiprocessing.Pool(threads) as pool:
+		chunksToWork = list(chunks(data,threads))
 		start = time.time()
-		independent_result = pool.map(P.independentPartition,[data])
+		independent_result = pool.map(P.independentPartition,chunksToWork)
 		end_time = (time.time()-start)
 		print(f"Partitioned independently in {end_time} ms")
 		P.log(datetime.now(),end_time,len(data),"Independent",numPartitions,threads)
 		start = time.time()
-		concurrent_result = pool.map(P.concurrentPartition,[data])
+		concurrent_result = pool.map(P.concurrentPartition,chunksToWork)
 		end_time = (time.time()-start)
 		print(f"Partitioned concurrently in {end_time} ms")
 		P.log(datetime.now(),end_time,len(data),"Concurrent",numPartitions,threads)
