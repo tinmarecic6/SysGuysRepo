@@ -4,5 +4,4 @@ if __name__ == '__main__':
 	threads = 2 
 	maxThreads = 32
 	for t in range(2,maxThreads):
-		for p in range(2,maxThreads):
-			os.system(f"python3 data_process_v2.py {p} {t}")
+			os.system(f"python3 data_process_v2.py {t}")
