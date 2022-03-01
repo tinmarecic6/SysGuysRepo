@@ -74,8 +74,7 @@ if __name__ == '__main__':
 	print("Generating data...")
 	with multiprocessing.Pool(threads) as pool:
 		data = pool.map(P.gen,[x for x in range(0,pow(2,24))])
-	print(f"Generated in {(time.time()-start)} s")
-	with multiprocessing.Pool(threads) as pool:
+		print(f"Generated in {(time.time()-start)} s")
 		for numPartitions in [2,4,6,8,10,12,14,16,18]:
 			print(f"Starting run with {numPartitions} partitions and {threads} threads")
 			P = Partitions(numPartitions,threads)
