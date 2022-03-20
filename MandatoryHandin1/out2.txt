@@ -1,0 +1,20 @@
+# started on Sun Mar 20 20:32:49 2022
+
+
+ Performance counter stats for './test4 32':
+
+     1128910196072      cycles                                                        (18.21%)
+      979934247070      instructions              #    0.87  insn per cycle         
+                                                  #    0.37  stalled cycles per insn  (27.30%)
+        5575437931      L1-icache-load-misses                                         (27.29%)
+       11836682359      L1-dcache-load-misses                                         (36.39%)
+        4763234502      LLC-load-misses                                               (36.36%)
+        4943747155      cache-misses                                                  (27.25%)
+      134690999943      stalled-cycles-frontend   #   11.93% frontend cycles idle     (18.15%)
+      360633466579      stalled-cycles-backend    #   31.95% backend cycles idle      (18.18%)
+        2009650775      branch-misses                                                 (27.27%)
+          81353119      iTLB-load-misses                                              (27.29%)
+        1483455854      dTLB-load-misses                                              (27.28%)
+
+     248.091691411 seconds time elapsed
+

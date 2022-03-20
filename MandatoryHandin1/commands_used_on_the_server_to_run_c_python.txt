@@ -1,0 +1,15 @@
+NB: combine data from 8th March with 20th March
+
+Commands used on the server:
+
+used test1 for partitions 2, 4, 6
+
+Used test3 for partitions 8, 10, 12 with perf output in out.txt
+
+Used test4 for partitions 14, 16, 18
+
+cython3 --embed -o test1.c data_process_v2.py
+
+gcc -Os -I /usr/include/python3.6m -o test1 test1.c -lpython3.6m -lpthread -lm -lutil -ldl
+
+perf stat -o out.txt -e cycles,instructions,L1-icache-load-misses,L1-dcache-load-misses,LLC-load-misses,cache-misses,stalled-cycles-frontend,stalled-cycles-backend,branch-misses,iTLB-load-misses,dTLB-load-misses ./test3 32
