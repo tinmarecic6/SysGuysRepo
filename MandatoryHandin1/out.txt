@@ -1,0 +1,21 @@
+# started on Sun Mar 20 19:41:54 2022
+
+# Ran with 8, 10, and 12 paritions
+
+ Performance counter stats for './test3 32':
+
+ 2,045,277,240,581      cycles                                                        (18.28%)
+ 1,355,637,974,975      instructions              #    0.66  insn per cycle         
+                                                  #    0.43  stalled cycles per insn  (27.43%)
+    22,310,450,561      L1-icache-load-misses                                         (27.40%)
+    22,849,848,706      L1-dcache-load-misses                                         (36.51%)
+    13,593,488,302      LLC-load-misses                                               (36.34%)
+    14,587,996,400      cache-misses                                                  (27.18%)
+   471,341,231,478      stalled-cycles-frontend   #   23.05% frontend cycles idle     (18.14%)
+   583,828,192,458      stalled-cycles-backend    #   28.55% backend cycles idle      (18.20%)
+     6,259,200,832      branch-misses                                                 (27.23%)
+       413,194,547      iTLB-load-misses                                              (27.24%)
+     2,289,318,652      dTLB-load-misses                                              (27.22%)
+
+    2658.932961886 seconds time elapsed
+

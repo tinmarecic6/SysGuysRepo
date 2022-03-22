@@ -1,0 +1,36 @@
+perf stat -e cycles,instructions,L1-icache-load-misses,L1-dcache-load-misses,LLC-load-misses,cache-misses,stalled-cycles-frontend,stalled-cycles-backend,branch-misses,iTLB-load-misses,dTLB-load-misses ./horizontal-0
+Testing up to array of size 4000
+Testing for array of size 10 * 10 = 100
+Horisontal took 0.000782 cpu milliseconds
+Testing for array of size 260 * 260 = 67600
+Horisontal took 0.526856 cpu milliseconds
+Testing for array of size 510 * 510 = 260100
+Horisontal took 2.016957 cpu milliseconds
+Testing for array of size 760 * 760 = 577600
+Horisontal took 4.484366 cpu milliseconds
+Testing for array of size 1010 * 1010 = 1020100
+Horisontal took 7.916716 cpu milliseconds
+Testing for array of size 1260 * 1260 = 1587600
+Horisontal took 12.313693 cpu milliseconds
+Testing for array of size 1510 * 1510 = 2280100
+Horisontal took 17.685379 cpu milliseconds
+Testing for array of size 1760 * 1760 = 3097600
+Horisontal took 24.040373 cpu milliseconds
+300865408
+ Performance counter stats for './horizontal-0':
+
+       94618999037      cycles                                                        (18.18%)
+      168954719857      instructions              #    1.79  insn per cycle         
+                                                  #    0.24  stalled cycles per insn  (27.27%)
+           2236143      L1-icache-load-misses                                         (27.27%)
+        1113743941      L1-dcache-load-misses                                         (36.36%)
+             79134      LLC-load-misses                                               (36.36%)
+             73532      cache-misses                                                  (27.27%)
+         193396531      stalled-cycles-frontend   #    0.20% frontend cycles idle     (18.19%)
+       40760869349      stalled-cycles-backend    #   43.08% backend cycles idle      (18.19%)
+           7520692      branch-misses                                                 (27.28%)
+              2237      iTLB-load-misses                                              (27.27%)
+          17229517      dTLB-load-misses                                              (27.27%)
+
+      68.991007145 seconds time elapsed
+

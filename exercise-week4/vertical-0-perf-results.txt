@@ -1,0 +1,47 @@
+perf stat -e cycles,instructions,L1-icache-load-misses,L1-dcache-load-misses,LLC-load-misses,cache-misses,stalled-cycles-frontend,stalled-cycles-backend,branch-misses,iTLB-load-misses,dTLB-load-misses ./vertical-0
+Testing up to array of size 4000
+Testing for array of size 10 * 10 = 100
+Vertical took 0.000830 cpu milliseconds
+
+Testing for array of size 260 * 260 = 67600
+Vertical took 0.739047 cpu milliseconds
+
+Testing for array of size 510 * 510 = 260100
+Vertical took 3.722599 cpu milliseconds
+
+Testing for array of size 760 * 760 = 577600
+Vertical took 6.856115 cpu milliseconds
+
+Testing for array of size 1010 * 1010 = 1020100
+Vertical took 13.904012 cpu milliseconds
+
+Testing for array of size 1260 * 1260 = 1587600
+Vertical took 25.174992 cpu milliseconds
+
+Testing for array of size 1510 * 1510 = 2280100
+Vertical took 37.095497 cpu milliseconds
+
+Testing for array of size 1760 * 1760 = 3097600
+Vertical took 37.809760 cpu milliseconds
+
+300865408
+ Performance counter stats for './vertical-0':
+
+      204969960945      cycles                                                        (18.18%)
+      169174151354      instructions              #    0.83  insn per cycle         
+                                                  #    0.89  stalled cycles per insn  (27.27%)
+           4188594      L1-icache-load-misses                                         (27.27%)
+        8714102741      L1-dcache-load-misses                                         (36.36%)
+            163953      LLC-load-misses                                               (36.36%)
+            166664      cache-misses                                                  (27.27%)
+         364652620      stalled-cycles-frontend   #    0.18% frontend cycles idle     (18.18%)
+      150350074030      stalled-cycles-backend    #   73.35% backend cycles idle      (18.18%)
+           7938170      branch-misses                                                 (27.28%)
+              4133      iTLB-load-misses                                              (27.27%)
+        6807566703      dTLB-load-misses                                              (27.27%)
+
+     125.309527215 seconds time elapsed
+
+Here we are waiting for the data
+It is missing the data alot more through the entire memory hierarchy
+

@@ -1,0 +1,37 @@
+Generating data...
+Generated in 21.18538212776184 s
+Starting run with 2 partitions and 32 threads
+Partitioned independently in 36.86847639083862 ms
+Partitioned independently in 13.819879055023193 ms after starting processes
+Partitioned concurrently in 39.27171564102173 ms
+Partitioned concurrently in 17.805997610092163 ms after starting processes
+Starting run with 4 partitions and 32 threads
+Partitioned independently in 44.57388424873352 ms
+Partitioned independently in 21.345274925231934 ms after starting processes
+Partitioned concurrently in 40.37526273727417 ms
+Partitioned concurrently in 17.488056182861328 ms after starting processes
+Starting run with 6 partitions and 32 threads
+Partitioned independently in 43.93756604194641 ms
+Partitioned independently in 21.943182945251465 ms after starting processes
+Partitioned concurrently in 39.94061231613159 ms
+Partitioned concurrently in 17.12932014465332 ms after starting processes
+Starting run with 8 partitions and 32 threads
+
+
+
+ Performance counter stats for './test1 32':
+
+    58060398791301      cycles                                                        (18.28%)
+    24095464775477      instructions              #    0.42  insn per cycle         
+                                                  #    0.90  stalled cycles per insn  (27.44%)
+     1114008104430      L1-icache-load-misses                                         (27.50%)
+      663434194319      L1-dcache-load-misses                                         (36.61%)
+      599816760063      LLC-load-misses                                               (36.42%)
+      654412804037      cache-misses                                                  (27.05%)
+    21629036145948      stalled-cycles-frontend   #   37.25% frontend cycles idle     (18.08%)
+    13427361427269      stalled-cycles-backend    #   23.13% backend cycles idle      (18.27%)
+      273278869488      branch-misses                                                 (27.38%)
+       25450975830      iTLB-load-misses                                              (27.23%)
+       48092824952      dTLB-load-misses                                              (27.18%)
+
+  162318.009820259 seconds time elapsed

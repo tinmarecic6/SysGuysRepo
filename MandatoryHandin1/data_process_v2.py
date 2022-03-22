@@ -58,9 +58,9 @@ class Partitions:
 			f.write(f"{method}|{dttm}|{throughput}|{dur}|{noTuples}|{partitions}|{threads}\n")
 
 def chunks(l, n):
-    """Yield n number of striped chunks from l."""
-    for i in range(0, n):
-        yield l[i::n]
+	"""Yield n number of striped chunks from l."""
+	for i in range(0, n):
+		yield l[i::n]
 
 if __name__ == '__main__':
 	temp = 2

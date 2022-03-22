@@ -1,0 +1,35 @@
+Testing up to array of size 4000
+Testing for array of size 10 * 10 = 100
+Horisontal took 0.000785 cpu milliseconds
+Vertical took 0.000832 cpu milliseconds
+
+Testing for array of size 260 * 260 = 67600
+Horisontal took 0.518452 cpu milliseconds
+Vertical took 0.418492 cpu milliseconds
+
+Testing for array of size 510 * 510 = 260100
+Horisontal took 0.866959 cpu milliseconds
+Vertical took 1.639519 cpu milliseconds
+
+Testing for array of size 760 * 760 = 577600
+Horisontal took 1.926949 cpu milliseconds
+Vertical took 2.993402 cpu milliseconds
+
+Testing for array of size 1010 * 1010 = 1020100
+Horisontal took 7.302683 cpu milliseconds
+Vertical took 13.833395 cpu milliseconds
+
+Testing for array of size 1260 * 1260 = 1587600
+Horisontal took 7.096817 cpu milliseconds
+Vertical took 13.394784 cpu milliseconds
+
+Testing for array of size 1510 * 1510 = 2280100
+Horisontal took 7.601605 cpu milliseconds
+Vertical took 15.956468 cpu milliseconds
+
+Testing for array of size 1760 * 1760 = 3097600
+Horisontal took 10.324743 cpu milliseconds
+Vertical took 21.685967 cpu milliseconds
+
+
+Horisontal is faster

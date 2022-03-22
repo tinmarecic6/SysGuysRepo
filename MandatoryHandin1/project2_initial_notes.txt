@@ -1,0 +1,8 @@
+OS option
+
+Try to compare the results from mini project 1 on the class server with
+trying to run the partitioning hashing on a low powered device
+(while also chaning the language used to something else than Python e.g. C)
+
+We will still follow the approach laid out in the paper by Rosen and Cieslewicz,
+but with some changed parameters e.g. hardware, programming language.
