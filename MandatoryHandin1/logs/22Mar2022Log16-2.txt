@@ -1,0 +1,23 @@
+# started on Wed Mar 23 17:04:51 2022
+
+
+ Performance counter stats for './data_process_v2 16 2':
+
+           515,694      cycles                                                      
+           190,272      instructions              #    0.37  insn per cycle                                            
+            10,352      L1-icache-load-misses                                       
+             4,605      L1-dcache-load-misses                                       
+     <not counted>      LLC-load-misses                                               (0.00%)
+     <not counted>      cache-misses                                                  (0.00%)
+     <not counted>      stalled-cycles-frontend                                       (0.00%)
+     <not counted>      stalled-cycles-backend                                        (0.00%)
+     <not counted>      branch-misses                                                 (0.00%)
+     <not counted>      iTLB-load-misses                                              (0.00%)
+     <not counted>      dTLB-load-misses                                              (0.00%)
+
+       0.001328945 seconds time elapsed
+
+Some events weren't counted. Try disabling the NMI watchdog:
+	echo 0 > /proc/sys/kernel/nmi_watchdog
+	perf stat ...
+	echo 1 > /proc/sys/kernel/nmi_watchdog

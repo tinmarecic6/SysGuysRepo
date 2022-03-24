@@ -1,0 +1,20 @@
+# started on Wed Mar 23 20:20:28 2022
+
+
+ Performance counter stats for './data_process_v2 8 16':
+
+   422,065,231,350      cycles                                                        (18.22%)
+   441,586,006,773      instructions              #    1.05  insn per cycle         
+                                                  #    0.42  stalled cycles per insn  (27.33%)
+     1,613,248,806      L1-icache-load-misses                                         (27.30%)
+     6,107,063,403      L1-dcache-load-misses                                         (36.38%)
+     1,638,244,706      LLC-load-misses                                               (36.36%)
+     1,671,640,812      cache-misses                                                  (27.24%)
+    37,822,175,210      stalled-cycles-frontend   #    8.96% frontend cycles idle     (18.16%)
+   187,121,152,667      stalled-cycles-backend    #   44.33% backend cycles idle      (18.16%)
+       813,671,379      branch-misses                                                 (27.25%)
+           975,992      iTLB-load-misses                                              (27.26%)
+       442,868,630      dTLB-load-misses                                              (27.29%)
+
+      94.942778038 seconds time elapsed
+
