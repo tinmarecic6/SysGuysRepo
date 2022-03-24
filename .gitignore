@@ -4,4 +4,4 @@ MandatoryHandin1/data_set*.txt
 */*/*.pyc
 */test.*
 test.*
-*/log*
+!*/log*
